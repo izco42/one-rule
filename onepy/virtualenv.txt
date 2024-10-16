@@ -1,0 +1,19 @@
+para crear el entorno virtual:
+  
+  python3 -m venv one 
+
+para activar el entorno virtual:
+
+  source one/bin/activate
+
+para desactivar:
+
+  deactivate
+
+generar archivo de dependencias:
+
+  pip freeze > requirements.txt
+
+instalar dependencias desde archivo:
+
+  pip install -r requirements.txt

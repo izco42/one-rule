@@ -1,0 +1,3 @@
+para generar un ejecutable:
+  cargo build --release
+esto genera un ejecutable en target/release

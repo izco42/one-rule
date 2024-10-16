@@ -1,0 +1,91 @@
+Sobre SERDE JSON en rust
+
+En Rust, serde_json es una biblioteca que facilita la serialización y deserialización de datos en formato JSON. Cuando se utiliza serde_json::Value, significa que estamos trabajando con valores que pueden representar cualquier tipo de dato en JSON (números, cadenas, arreglos, objetos, etc.).
+
+
+Funciones LAMBDA en Rust
+
+Las funciones lambda en Rust son funciones anónimas que se definen de forma compacta e in-line,
+es decir, sin un nombre explícito. Se usan comúnmente cuando se necesita definir pequeñas 
+funciones de forma rápida y concisa, generalmente como argumentos de otras funciones de orden 
+superior (como map, filter, reduce, etc.).
+
+
+SINTAXIS
+
+|parametros| -> TipoDeRetorno {
+    cuerpo_de_la_funcion
+}
+
+
+|parametros|: Dentro de las barras verticales (|), se definen los parámetros que la función anónima tomará.
+
+-> TipoDeRetorno (opcional): El tipo de retorno de la función. Si no se especifica, Rust intentará inferirlo.
+
+{ cuerpo_de_la_funcion }: El código que será ejecutado cuando la función se llame. Si la función tiene solo una expresión, las llaves pueden omitirse.
+
+
+Uso de WRAP en rust
+
+En Rust, el método unwrap se usa para obtener el valor de un tipo Option o Result, asumiendo que
+contiene un valor válido, es decir, en el caso de Option, que sea Some(valor), y en el caso de 
+Result, que sea Ok(valor).  
+
+
+Usar unwrap es seguro cuando estás 100% seguro de que el valor será válido.
+
+Por ejemplo, si sabes con certeza que un Option será siempre Some o un Result será siempre Ok,
+puedes usar unwrap para evitar la necesidad de manejar casos de error explícitamente.
+
+EJEMPLO:
+
+fn main() {
+    // Lee el archivo y lo desenvuelve
+    let file_content = std::fs::read_to_string("archivo.txt").unwrap();  
+    println!("{}", file_content);
+}
+
+En este ejemplo, unwrap asume que la operación de lectura de archivo será exitosa. Si no lo es 
+(por ejemplo, si el archivo no existe), se generará un panic!.
+
+¿Cuándo evitar unwrap?
+
+Cuando existe una posibilidad real de error y quieres manejarla de manera más controlada.
+En lugar de usar unwrap, es recomendable usar métodos más seguros como expect (que permite dar un
+mensaje de error personalizado) o manejar explícitamente los casos de error con patrones match.
+
+
+Sobre PUNTEROS en rust
+
+En Rust, existen dos tipos principales de punteros:
+
+Referencias (& y &mut): Son punteros seguros que garantizan que la memoria a la que apuntan es
+válida.  
+
+Punteros crudos (*const y *mut): Son punteros similares a los de C, pero se usan con menos 
+frecuencia debido a que Rust favorece la seguridad.
+
+Declaración y uso de punteros en C:
+
+    Para declarar un puntero en C, usamos el tipo seguido del operador *.
+
+    Para obtener la dirección de una variable, usamos el operador &.
+
+    Para desreferenciar un puntero, usamos el operador *.
+
+Analogía con Rust:
+
+    En Rust, &x es similar a &x en C: ambos obtienen la dirección de una variable.
+
+    *ptr en C es similar a *r en Rust para desreferenciar.
+
+    A diferencia de C, Rust asegura que no haya punteros nulos y que las referencias sean siempre 
+    válidas en tiempo de ejecución, evitando data races y problemas de acceso a memoria inválida. 
+
+    Siempre que se use &mut para crear un puntero se debera usar * para desreferenciarlo y 
+    modificar su valor:
+      
+      let mut x = 5;     
+      let r_mut = &mut x; 
+      *r_mut += 10; 
+      
